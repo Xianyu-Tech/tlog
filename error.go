@@ -45,6 +45,10 @@ func (this *LogError) ErrCode() string {
 	return this._err_code
 }
 
+func (this *LogError) ErrMsg() []string {
+	return this._err_msg
+}
+
 func (this *LogError) AttachErrMsg(msg string) *LogError {
 	this._err_msg = append(this._err_msg, msg)
 
