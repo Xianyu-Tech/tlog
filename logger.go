@@ -222,45 +222,45 @@ func (this *Logger) monitorLog() error {
 }
 
 // Func - 输出Debug日志
-func (this *Logger) Debug(format string, v ...interface{}) {
+func (this *Logger) Debug(data string) {
 	this.RLock()
 	defer this.RUnlock()
 
 	if this._debug != nil {
-		this._debug.Output(3, fmt.Sprintln(fmt.Sprintf(format, v...)))
+		this._debug.Output(3, data)
 	}
 }
 
 // Func - 输出Info日志
-func (this *Logger) Info(format string, v ...interface{}) {
+func (this *Logger) Info(data string) {
 	this.RLock()
 	defer this.RUnlock()
 
 	if this._info != nil {
-		this._info.Output(3, fmt.Sprintln(fmt.Sprintf(format, v...)))
+		this._info.Output(3, data)
 	}
 }
 
 // Func - 输出Warn日志
-func (this *Logger) Warn(format string, v ...interface{}) {
-	_std_warn.Output(3, fmt.Sprintln(fmt.Sprintf(format, v...)))
+func (this *Logger) Warn(data string) {
+	_std_warn.Output(3, data)
 
 	this.RLock()
 	defer this.RUnlock()
 
 	if this._warn != nil {
-		this._warn.Output(3, fmt.Sprintln(fmt.Sprintf(format, v...)))
+		this._warn.Output(3, data)
 	}
 }
 
-// Func - 输出Error日志
-func (this *Logger) Error(format string, v ...interface{}) {
-	_std_error.Output(3, fmt.Sprintln(fmt.Sprintf(format, v...)))
+// Func - 输出Error原始日志
+func (this *Logger) Error(data string) {
+	_std_error.Output(3, data)
 
 	this.RLock()
 	defer this.RUnlock()
 
 	if this._err != nil {
-		this._err.Output(3, fmt.Sprintln(fmt.Sprintf(format, v...)))
+		this._err.Output(3, data)
 	}
 }
